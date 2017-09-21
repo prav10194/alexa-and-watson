@@ -71,17 +71,17 @@ Next, under the **Configuration**, we will call the server side action api to li
 
 1. Create a Watson Tone Analyzer service using: 
     ```
-    cf create-service tone_analyzer standard alexaAnalyzer
+    bx cf create-service tone_analyzer standard alexaAnalyzer
     ```
 1. Obtain your Tone Analyzer credentials, from your [Bluemix console](https://console.ng.bluemix.net) under the service created you should be able to get the Service credentials.
 1. Modify the action.js file by adding your Tone Analyzer username and password. 
 1. Create OpenWhisk Action 
     ```
-    wsk action create alexaAndWatson action.js
+    bx wsk action create alexaAndWatson action.js
     ```
 1. Expose your OpenWhisk Action as an API using:
     ```
-    wsk api-experimental wsk api-experimental create /alexaWatson /api/v1 post alexaAndWatson --annotation web-export true
+    bx wsk api create /alexaWatson /api/v1 post alexaAndWatson --annotation web-export true
     ```
 1. Copy the API endpoint in your console and past into the Amazon Alexa API filed, see image below. 
     You should see something like: 
